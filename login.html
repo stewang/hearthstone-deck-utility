@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Hearthstone </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="SitePoint">
+  <link rel="stylesheet" type="text/css" href="login.css">
+</head>
+
+<body>
+<ul>
+  <li><a href="#news">Decks</a></li>
+  <li><a href="#contact">Statistics</a></li>
+  <li style="float:right"><a href="#about">Sign Out</a></li>
+  <li style="float:right"><a class="active" href="#about">Log In</a></li>
+</ul>
+  <h2>Welcome! </h2>
+
+<form action="/action_page.php">
+  <div class="imgcontainer">
+    <img src="login_logo.png" alt="Logo" class="logo">
+  </div>
+
+  <div class="container">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+        
+    <button type="submit">Login</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+	<span class="newU"> <a href = "#">Sign up</a></span>
+  </div>
+</form>
+</body>
+</html>
