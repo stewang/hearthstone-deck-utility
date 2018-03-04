@@ -33,6 +33,7 @@ li a:hover:not(.active) {
 .active {
     background-color: #FE9A2E;
 }
+
 .vertical-menu {
     width: 30%; /* Set a width if you like */
 	height: 400px;
@@ -55,6 +56,7 @@ li a:hover:not(.active) {
     background-color: #FE9A2E; /* Add a color to the "active/current" link */
     color: white;
 }
+
 input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
@@ -102,10 +104,12 @@ span.psw {
     float: right;
     padding-top: 16px;
 }
+
 span.newU {
     float: right;
     padding-top: 16px;
 }
+
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
     span.psw {
@@ -120,3 +124,4 @@ span.newU {
        width: 100%;
     }
 }
+
