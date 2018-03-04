@@ -19,16 +19,42 @@
     <div class="container">
     <h2>Statistics Tracker</h2>
         <div class="navbar dropdown">
-            <button class="dropbtn">Dropdown</button>
+            <button class="dropbtn" id="dropbtn">Dropdown</button>
             <div class="dropdown-content">
-                <a href="#">Charts</a>
-                <a href="#">Card Stats</a>
-                <a href="#">Win/Loss</a>
+                <a href="#" onclick="showCharts()">Charts</a>
+                <a href="#" onclick="showCardStats()">Card Stats</a>
+                <a href="#" onclick="showWinLoss()">Win/Loss</a>
             </div>
         </div>
-        <div class="content">
-            Hi I am a statistics tracker.
-        </div>
+
+        <div class="content" id="content"></div>
+
     </div>
+
+    <script>
+
+        function showCharts() {
+            var content = document.getElementById("content");
+            content.innerHTML = "There are some charts here gee willy! Dilly dilly!"
+
+            document.getElementById("dropbtn").innerHTML = "Charts"
+        }
+
+        function showCardStats() {
+            var content = document.getElementById("content");
+            content.innerHTML = "Holy flipping pattycakes look at these cards!"
+
+            document.getElementById("dropbtn").innerHTML = "Card Stats"
+        }
+
+        function showWinLoss() {
+            var content = document.getElementById("content");
+            content.innerHTML = "All these wins and losses are exciting my electrons!"
+
+            document.getElementById("dropbtn").innerHTML = "Win/Loss"
+        }
+
+    </script>
+
 </body>
 </html>
