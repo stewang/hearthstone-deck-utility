@@ -1,19 +1,24 @@
-body {font-family: Arial, Helvetica, sans-serif;}
-form {border: 3px solid #f1f1f1;}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #F6E3CE;
+}
+form {
+    border: 3px solid #f1f1f1;
+}
 
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #DF7401;
 }
 
 li {
     float: left;
 }
 
-li a {
+li a, li span {
     display: block;
     color: white;
     text-align: center;
@@ -22,32 +27,32 @@ li a {
 }
 
 li a:hover:not(.active) {
-    background-color: #111;
+    background-color: #FE9A2E;
 }
 
 .active {
-    background-color: #4CAF50;
+    background-color: #FE9A2E;
 }
 .vertical-menu {
-    width: 500px; /* Set a width if you like */
-	height: 700px;
+    width: 30%; /* Set a width if you like */
+	height: 400px;
     overflow-y: auto;
 } /*So my goal is to add javascript so that you can add additional decks*/
 
 .vertical-menu a {
-    background-color: #eee; /* Grey background color */
-    color: black; /* Black text color */
+    background-color: #FBF8EF; /* Background color */
+    color: black; /* Text color */
     display: block; /* Make the links appear below each other */
     padding: 12px; /* Add some padding */
     text-decoration: none; /* Remove underline from links */
 }
 
 .vertical-menu a:hover {
-    background-color: #ccc; /* Dark grey background on mouse-over */
+    background-color: #FE9A2E; /* Background color change on mouse-over */
 }
 
 .vertical-menu a.active {
-    background-color: #4CAF50; /* Add a green color to the "active/current" link */
+    background-color: #FE9A2E; /* Add a color to the "active/current" link */
     color: white;
 }
 input[type=text], input[type=password] {
@@ -60,7 +65,7 @@ input[type=text], input[type=password] {
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #FE9A2E;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
