@@ -13,11 +13,9 @@ ul {
     overflow: hidden;
     background-color: #DF7401;
 }
-
 li {
     float: left;
 }
-
 li a, li span {
     display: block;
     color: white;
@@ -25,7 +23,6 @@ li a, li span {
     padding: 14px 16px;
     text-decoration: none;
 }
-
 li a:hover:not(.active) {
     background-color: #FE9A2E;
 }
@@ -35,23 +32,18 @@ li a:hover:not(.active) {
 }
 
 .vertical-menu {
-    width: 30%; /* Set a width if you like */
-	height: 400px;
     overflow-y: auto;
 } /*So my goal is to add javascript so that you can add additional decks*/
-
 .vertical-menu a {
-    background-color: #FBF8EF; /* Background color */
+    background-color: #f1f1f1; /* Background color */
     color: black; /* Text color */
     display: block; /* Make the links appear below each other */
     padding: 12px; /* Add some padding */
     text-decoration: none; /* Remove underline from links */
 }
-
 .vertical-menu a:hover {
     background-color: #FE9A2E; /* Background color change on mouse-over */
 }
-
 .vertical-menu a.active {
     background-color: #FE9A2E; /* Add a color to the "active/current" link */
     color: white;
@@ -75,7 +67,6 @@ button {
     cursor: pointer;
     width: 100%;
 }
-
 button:hover {
     opacity: 0.8;
 }
@@ -100,11 +91,20 @@ img.logo {
     padding: 16px;
 }
 
+.content {
+  float: left;
+  width: 68%;
+  padding-left: 2%;
+}
+.navbar {
+  float: left;
+  width: 30%;
+}
+
 span.psw {
     float: right;
     padding-top: 16px;
 }
-
 span.newU {
     float: right;
     padding-top: 16px;
@@ -125,3 +125,43 @@ span.newU {
     }
 }
 
+/* Style The Dropdown Button */
+.dropbtn {
+    background-color: #FE9A2E;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #FE9A2E;
+}
