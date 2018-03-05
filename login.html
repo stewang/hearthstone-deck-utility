@@ -13,7 +13,7 @@
     <ul>
         <li><span>Hearthstone Deck Utility</span></li>
         <li style="float:right"><a class="active" href="#">Log In</a></li>
-        <li style="float:right"><a href="#">Sign Up</a></li>
+        <li style="float:right"><a href="signup.html">Sign Up</a></li>
     </ul>
 
     <div class="container" align="center">
@@ -28,14 +28,14 @@
                 <input type="text" placeholder="Enter Username" name="uname" required>
 
                 <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
-                        
+                <input type="password" id="psw" placeholder="Enter Password" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+            
                 <button type="submit">Login</button>
                 
                 <input type="checkbox" checked="checked" name="remember"> Remember me
                 <span class="psw"><a href="#">Forgot password?</a></span>
             </div>
         </form>
-    </div>
+    </div>    
 </body>
 </html>
