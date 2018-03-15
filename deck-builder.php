@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,10 +14,16 @@
 </head>
 
 <body>
+	<?php
+		if (!isset($_SESSION['user'])) {
+			header('Location: login.php');
+		}
+	?>
+
     <ul>
         <li><span>Hearthstone Deck Utility</span></li>
-        <li style="float:right"><a href="login.html">Log Out</a></li>
-        <li style="float:right"><a href="tracker.html">Statistics</a></li>
+        <li style="float:right"><a href="logout.php">Log Out (<?php echo $_SESSION['user']?>) </a></li>
+        <li style="float:right"><a href="tracker.php">Statistics</a></li>
         <li style="float:right"><a href="#" class="active">Decks</a></li>
     </ul>
     <div class="container">
