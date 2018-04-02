@@ -75,7 +75,9 @@ session_start();
                 <span class="psw"><a href="#">Forgot password?</a></span>
             </div>
         </form>
-    </div>    
+    </div>   
+
+    <a href="http://localhost:8080/servlets/Hello">Click Me</a>
 
 </body>
 </html>
