@@ -7,6 +7,6 @@ session_start();     // always make session available when dealing session objec
 $_SESSION = array();
 session_destroy();
 
-header('Location: login.php');
+header('Location: http://localhost:8080/servlets/LogoutServlet');
 
 ?>

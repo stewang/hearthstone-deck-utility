@@ -41,7 +41,7 @@ session_start();
                     $_SESSION['user'] = $user;
                     $_SESSION['pwd'] = $pwd;
                     
-                    header('Location: deck-builder.php');
+                    header('Location: http://localhost:8080/servlets/LoginServlet');
                 }
             }
         }

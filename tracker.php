@@ -59,7 +59,8 @@ session_start();
 
         function showWinLoss() {
             var content = document.getElementById("content");
-            content.innerHTML = "All these wins and losses are exciting my electrons!"
+            var url = "http://localhost:8080/servlets/WinLossServlet"
+            content.innerHTML = "<a href=\"" + url + "?action=win\">Add Win</a> <a href=\"" + url + "?action=loss\">Add Loss</a>"
 
             document.getElementById("dropbtn").innerHTML = "Win/Loss"
         }
