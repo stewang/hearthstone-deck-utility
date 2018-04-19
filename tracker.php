@@ -45,7 +45,8 @@ session_start();
 
         function showCharts() {
             var content = document.getElementById("content");
-            content.innerHTML = "There are some charts here gee willy! Dilly dilly!"
+            var url = "http://localhost:8080/servlets/charts.jsp"
+            content.innerHTML = "<a href=\"" + url + "\">View Win/Loss Chart</a>"
 
             document.getElementById("dropbtn").innerHTML = "Charts"
         }
