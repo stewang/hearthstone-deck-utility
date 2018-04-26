@@ -47,5 +47,16 @@ Winrate: <%= winRate %>%
     		response.sendRedirect("http://localhost/cs4640/hearthstone-deck-utility/login.php");
     	}
 	%>
+		<jsp:include page="decksummary.jsp" /> 
+	 <%
+	    String deckname = request.getParameter("forward"); 
+		if(deckname != null && !deckname.isEmpty()){
+	  %> 
+	  	<jsp:forward page="decksummary.jsp">
+	   <jsp:param name="deckname" value="Deck1" ></jsp:param>
+	 	 </jsp:forward>
+		 <%
+		  }
+		%> 
 </body>
 </html>
