@@ -45,7 +45,7 @@ session_start();
 
         function showCharts() {
             var content = document.getElementById("content");
-            var url = "http://localhost:8080/servlets/charts.jsp"
+            var url = "http://localhost:8080/servlets/charts-forwarder.jsp"
             content.innerHTML = "<a href=\"" + url + "\">View Win/Loss Chart</a>"
 
             document.getElementById("dropbtn").innerHTML = "Charts"
