@@ -40,6 +40,13 @@ Losses: <%
 	    %>
 Winrate: <%= winRate %>%	
 	    </pre></p>
+	    
+	    <jsp:include page="decksummary.jsp">
+	   		<jsp:param name="deckname" value="Deck1" ></jsp:param>
+	 	</jsp:include>
+	 	
+	 	<br><br>
+	    
 	    <a href="http://localhost/cs4640/hearthstone-deck-utility/tracker.php">Back</a>
     
     <%
@@ -47,5 +54,7 @@ Winrate: <%= winRate %>%
     		response.sendRedirect("http://localhost/cs4640/hearthstone-deck-utility/login.php");
     	}
 	%>
+	  	
+
 </body>
 </html>
