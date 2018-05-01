@@ -95,28 +95,6 @@ session_start();
     </div>
     
     <script>
-		function deckExists(deckName) {
-// 			http://www.dummies.com/web-design-development/html/how-to-load-xml-with-javascript-on-an-html5-page/
-
-			var connect = new XMLHttpRequest();
-			connect.open("GET", "servlets/WebContent/WEB-INF/data/decks.xml", false);
-			connect.setRequestHeader("Content-Type", "text/xml");
-			connect.send(null);
-			var xml = connect.responseXML;
-			var decks = xml.childNodes[0];
-			for (var i = 0; i < decks.children.length; i++)
-			{
-			   var deck = decks.children[i];
-			   var name = deck.getElementsByTagName("name");
-
-			   if (name == deckName)
-				   return true;
-			}
-			return false;
-		}
-    </script>
-    
-    <script>
 		var deckApp = angular.module('deckApp', []);
 	
 		deckApp.controller("deckController", function ($scope, $http) 

@@ -77,7 +77,5 @@ session_start();
         </form>
     </div>   
 
-    <a href="http://localhost:8080/servlets/Hello">Click Me</a>
-
 </body>
 </html>
