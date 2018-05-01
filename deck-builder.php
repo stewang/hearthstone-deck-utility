@@ -18,6 +18,19 @@ session_start();
 		if (!isset($_SESSION['user'])) {
 			header('Location: login.php');
 		}
+		
+		$xml=simplexml_load_file("servlets/WebContent/WEB-INF/data/decks.xml") or die("Error: Cannot create object from XML file");
+		
+		
+		if (!isset($_SESSION['activeDeck'])) {
+			$_SESSION['activeDeck'] = (string)$xml->deck[0]->name;
+		}
+		
+		if ($_SERVER['REQUEST_METHOD'] == 'POST')
+		{
+			if (isset($_POST['activeDeck']))
+				$_SESSION['activeDeck'] = $_POST['activeDeck'];
+		}
 	?>
 
     <ul>
@@ -28,10 +41,17 @@ session_start();
     </ul>
     <div class="container" ng-controller="deckController">
     <h2>Deck Builder</h2>
-        <div class="navbar vertical-menu" id = "deckmenu">
-            <a href= "#d1" id = "deck1" class="active" onclick = "click1()">Deck 1</a>
-            <a href="#d2" id = "deck2" onclick = "click2()">Deck 2</a>
-            <a href="#d3" id = "deck3" onclick = "click3()">Deck 3</a>
+        <div class="navbar vertical-menu" id="deckmenu">
+        	<?php 
+        		foreach ($xml as $deck) {
+        			$name = (string)$deck->name;
+        			$activeDeck = $_SESSION['activeDeck'];
+        			if ($name == $activeDeck)
+        				echo "<a href=\"\" id=\"{$name}\" class=\"active\" onclick=\"setDeck(this)\">{$name}</a>\n";
+        			else
+        				echo "<a href=\"\" id=\"{$name}\" onclick=\"setDeck(this)\">{$name}</a>\n";
+        		}
+        	?>
             <br>
         </div>
         <div class="content">
@@ -59,23 +79,31 @@ session_start();
 				alert("Deck Creation not yet supported");
 				p.reset();
 			}
-			function click1()
+			function setDeck(deck)
 			{
-				document.getElementById("deck1").className='active';
-				document.getElementById("deck2").className='';
-				document.getElementById("deck3").className='';
-			}
-			function click2()
-			{
-				document.getElementById("deck2").className='active';
-				document.getElementById("deck1").className='';
-				document.getElementById("deck3").className='';
-			}
-			function click3()
-			{
-				document.getElementById("deck3").className='active';
-				document.getElementById("deck2").className='';
-				document.getElementById("deck1").className='';
+// 				https://stackoverflow.com/questions/133925/javascript-post-request-like-a-form-submit
+
+				method = "post";
+				params = {activeDeck: deck.id};
+				path = "";
+
+			    var form = document.createElement("form");
+			    form.setAttribute("method", method);
+			    form.setAttribute("action", path);
+
+			    for(var key in params) {
+			        if(params.hasOwnProperty(key)) {
+			            var hiddenField = document.createElement("input");
+			            hiddenField.setAttribute("type", "hidden");
+			            hiddenField.setAttribute("name", key);
+			            hiddenField.setAttribute("value", params[key]);
+
+			            form.appendChild(hiddenField);
+			        }
+			    }
+
+			    document.body.appendChild(form);
+			    form.submit();
 			}
 			</script>
         </div>
