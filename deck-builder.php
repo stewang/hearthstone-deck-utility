@@ -43,9 +43,9 @@ session_start();
     <h2>Deck Builder</h2>
         <div class="navbar vertical-menu" id="deckmenu">
         	<?php 
+        		$activeDeck = $_SESSION['activeDeck'];
         		foreach ($xml as $deck) {
         			$name = (string)$deck->name;
-        			$activeDeck = $_SESSION['activeDeck'];
         			if ($name == $activeDeck)
         				echo "<a href=\"\" id=\"{$name}\" class=\"active\" onclick=\"setDeck(this)\">{$name}</a>\n";
         			else
@@ -62,7 +62,7 @@ session_start();
 						<p>Enter Deck Name: <input type="text" name="newDeckName"
 												ng-model="newDeckName" ng-keyup="checkName()"/></p>
 						<p>{{message}}</p>
-						<button type="submit" onclick="closepop()">Create Deck</button>
+						<button type="submit" id="createDeckButton" ng-click="createDeck()" disabled>Create Deck</button>
 					</form>
 				</div>
 			</div>
@@ -110,25 +110,62 @@ session_start();
     </div>
     
     <script>
+		function deckExists(deckName) {
+// 			http://www.dummies.com/web-design-development/html/how-to-load-xml-with-javascript-on-an-html5-page/
+
+			var connect = new XMLHttpRequest();
+			connect.open("GET", "servlets/WebContent/WEB-INF/data/decks.xml", false);
+			connect.setRequestHeader("Content-Type", "text/xml");
+			connect.send(null);
+			var xml = connect.responseXML;
+			var decks = xml.childNodes[0];
+			for (var i = 0; i < decks.children.length; i++)
+			{
+			   var deck = decks.children[i];
+			   var name = deck.getElementsByTagName("name");
+
+			   if (name == deckName)
+				   return true;
+			}
+			return false;
+		}
+    </script>
+    
+    <script>
 		var deckApp = angular.module('deckApp', []);
 	
 		deckApp.controller("deckController", function ($scope, $http) 
 		{
 			$scope.message = "";
 
+			var onSuccess = function (data, status, headers, config)
+			{
+				$scope.message = "Name is OK.";
+				document.getElementById("createDeckButton").disabled = false;
+			};
+
+			var onError = function (data, status, headers, config)
+			{
+				$scope.message = "A deck with that name already exists!";
+				document.getElementById("createDeckButton").disabled = true;
+			};
+			
 			$scope.checkName = function() {
-// 				In the future this function can check the name against all existing decks in the XML
 				var newDeckName = $scope.newDeckName;
-				if (newDeckName == "")
+				if (newDeckName == "") {
 					$scope.message = "";
-				else if (newDeckName == "Deck 1" || newDeckName == "Deck 2" || newDeckName == "Deck 3")
-					$scope.message = "A deck with that name already exists!";
-				else
-					$scope.message = "Name is OK.";
+					document.getElementById("createDeckButton").disabled = true;
+				}
+				else {
+					var promise = $http.post("checkDeckName.php", {"newDeckName": $scope.newDeckName});
+					promise.success(onSuccess);
+					promise.error(onError);
+				}
 			}  
 
-// 			We can add another function here to actually submit the deck to our XML
-			
+			$scope.createDeck = function() {
+				$http.post("createDeck.php", {"newDeckName": $scope.newDeckName});
+			}  
 		});
     </script>
     
