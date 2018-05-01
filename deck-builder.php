@@ -21,7 +21,6 @@ session_start();
 		
 		$xml=simplexml_load_file("servlets/WebContent/WEB-INF/data/decks.xml") or die("Error: Cannot create object from XML file");
 		
-		
 		if (!isset($_SESSION['activeDeck'])) {
 			$_SESSION['activeDeck'] = (string)$xml->deck[0]->name;
 		}
@@ -55,30 +54,16 @@ session_start();
             <br>
         </div>
         <div class="content">
-			<div class = "deckpadding">
-				<img class = "deckpng" alt="Pack" src="images/deck.png" style="height: 250px;" onclick="pop()">
-				<div class = "popupDeckName">
-					<form class = "popuptext" id = "myPopup">
-						<p>Enter Deck Name: <input type="text" name="newDeckName"
-												ng-model="newDeckName" ng-keyup="checkName()"/></p>
-						<p>{{message}}</p>
-						<button type="submit" id="createDeckButton" ng-click="createDeck()" disabled>Create Deck</button>
-					</form>
-				</div>
+			<img class = "deckpng" alt="Pack" src="images/deck.png" style="height: 250px;">
+			<div class = "popupDeckName">
+				<form>
+				<p>Enter Deck Name: <input type="text" name="newDeckName"
+											ng-model="newDeckName" ng-keyup="checkName()"/></p>
+				<p>{{message}}</p>
+				<button type="submit" id="createDeckButton" ng-click="createDeck()" disabled>Create Deck</button>
+				</form>
 			</div>
 			<script>
-			function pop() 
-			{
-				var p = document.getElementById('myPopup');
-				p.classList.toggle('show');
-			}
-			function closepop()
-			{
-				var p = document.getElementById('myPopup');
-				p.classList.toggle('show');
-				alert("Deck Creation not yet supported");
-				p.reset();
-			}
 			function setDeck(deck)
 			{
 // 				https://stackoverflow.com/questions/133925/javascript-post-request-like-a-form-submit
@@ -157,14 +142,16 @@ session_start();
 					document.getElementById("createDeckButton").disabled = true;
 				}
 				else {
-					var promise = $http.post("checkDeckName.php", {"newDeckName": $scope.newDeckName});
+					var promise = $http.post("checkDeckName.php", {"newDeckName": newDeckName});
 					promise.success(onSuccess);
 					promise.error(onError);
 				}
 			}  
 
 			$scope.createDeck = function() {
+				console.log('yay');
 				$http.post("createDeck.php", {"newDeckName": $scope.newDeckName});
+				location.reload();
 			}  
 		});
     </script>

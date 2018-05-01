@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <decks>
-	<deck id="001">
-		<name>Deck 1</name>
-	</deck>
-	<deck id="002">
-		<name>Deck 2</name>
-	</deck>
-	<deck id="003">
-		<name>Deck 3</name>
-	</deck>
+  <deck>
+    <name>Deck 1</name>
+  </deck>
+  <deck>
+    <name>Deck 2</name>
+  </deck>
+  <deck>
+    <name>Deck 3</name>
+  </deck>
 </decks>
